@@ -10,9 +10,6 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView diceNum;
-    EditText name1;
-    EditText name2;
-
 
 
     @Override
@@ -25,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         diceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                diceNum.setText(Integer.toString((int) (Math.random() * 6 + 1)));//uses default dice, try to add classes later
+                diceNum.setText(Integer.toString(new Dice().rollDice()));//add user input
             }
         });
     }
