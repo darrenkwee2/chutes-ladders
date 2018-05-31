@@ -24,6 +24,6 @@ public class Dice
     
     public int rollDice()
     {
-        return (int) (Math.random() * (max - min) + min);
+        return (int) (Math.random() * max + min);
     }
 }
