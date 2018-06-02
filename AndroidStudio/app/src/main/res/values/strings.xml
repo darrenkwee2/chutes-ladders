@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Chutes &amp; Ladders</string>
+    <string name="dice">dice</string>
+    <string name="player1">Player One</string>
+    <string name="player2">Player Two</string>
+</resources>
