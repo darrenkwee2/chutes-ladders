@@ -49,8 +49,6 @@ public class Board
         board[5][0] = new Space(16, new Obstacle(16, 6));
         board[0][1] = new Space(62, new Obstacle(62, 7));
         board[2][0] = new Space(47, new Obstacle(47, 28));
-        
-
     }
     
     public Board(int row, int col, int numObstacles)//not complete, use math random for obstacles
@@ -67,6 +65,10 @@ public class Board
         }
     }
     
+    public Space getSpace(int val1, int val2)
+    {
+        return board[val1][val2];
+    }
     
     public int getNumSpaces()
     {
