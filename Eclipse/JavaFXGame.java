@@ -136,7 +136,7 @@ public class JavaFXGame extends Application
                 
                 BorderPane finalPane = new BorderPane();
                 BorderPane.setMargin(grid2, new Insets(45));
-                finalPane.setStyle("-fx-background-color: black;");
+                //finalPane.setStyle("-fx-background-color: black;");
                 finalPane.setPrefSize(1920,1080);
                 finalPane.setCenter(grid2);
                 finalPane.setLeft(diceView);
