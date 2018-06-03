@@ -1,6 +1,7 @@
 package com.darrenkwee.chutesladders;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,15 +16,21 @@ public class StartScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_screen);
 
-        next();
+        nextScreen();
+
     }
 
-    private void next() {
-        Button next = (Button) findViewById(R.id.button1);
-        next.setOnClickListener(new View.OnClickListener() {
+
+
+
+    private void nextScreen() {
+        Button b = (Button) findViewById(R.id.continue1);
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Game.class));
+                Intent startGame = new Intent(getBaseContext(), Game.class);
+                startActivity(startGame);
+
             }
         });
 

@@ -8,7 +8,7 @@
     tools:context=".StartScreen">
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/continue1"
         android:layout_width="339dp"
         android:layout_height="110dp"
         android:layout_marginBottom="8dp"
@@ -22,24 +22,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/NameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="85dp">
+    <!--<android.support.design.widget.TextInputLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent">-->
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/player1name"
-            android:layout_width="206dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/player1" />
+        <!--<android.support.design.widget.TextInputEditText-->
+            <!--android:id="@+id/player1Name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/player1" />-->
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/player2name"
-            android:layout_width="203dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/player2" />
+        <!--<android.support.design.widget.TextInputEditText-->
+            <!--android:id="@+id/player2Name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:hint="@string/player2" />-->
 
-    </android.support.design.widget.TextInputLayout>
+    <!--</android.support.design.widget.TextInputLayout>-->
+
 </android.support.constraint.ConstraintLayout>
