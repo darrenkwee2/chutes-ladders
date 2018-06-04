@@ -19,7 +19,7 @@ public class TextGame
         
         
         
-        while (hasWon == false)//can change to static for multiple players
+        while (hasWon == false)
         {
             currentTurn = 1;
             p1.move(dice.rollDice());

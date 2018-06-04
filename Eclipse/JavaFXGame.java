@@ -93,15 +93,7 @@ public class JavaFXGame extends Application
                 		grid2.add(board.getSpace(row,col), col, row);
                 	}
                 }
-                
-                ImageView p1Icon = new ImageView();
-                p1Icon.setFitWidth(30);
-                p1Icon.setFitHeight(30);
-                p1Icon.setPreserveRatio(true);
-                Image blue = new Image("file:blue.png");
-                p1Icon.setImage(blue);
-                board.getSpace(0,0).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
-                board.getSpace(0,0).getChildren().add(p1Icon);
+       
                 
                 StackPane diceView = new StackPane();
                 diceView.setBackground(Background.EMPTY);
@@ -154,7 +146,46 @@ public class JavaFXGame extends Application
 
 				
                  });
+                 
+                 ImageView p1Icon = new ImageView();
+                 p1Icon.setFitWidth(30);
+                 p1Icon.setFitHeight(30);
+                 p1Icon.setPreserveRatio(true);
+                 Image blue = new Image("file:blue.png");
+                 p1Icon.setImage(blue);
+                 board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
+                 board.getSpace(7,1).getChildren().add(p1Icon);
+                 
+                 ImageView p2Icon = new ImageView();
+                 p2Icon.setFitWidth(30);
+                 p2Icon.setFitHeight(30);
+                 p2Icon.setPreserveRatio(true);
+                 Image red = new Image("file:red.png");
+                 p2Icon.setImage(red);
+                 board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
+                 board.getSpace(7,0).getChildren().add(p2Icon);                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
                 diceButton.setGraphic(diceDisplay);
                 diceView.getChildren().add(diceButton);
                 
