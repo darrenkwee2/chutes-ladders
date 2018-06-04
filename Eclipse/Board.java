@@ -69,6 +69,18 @@ public class Board
     {
         return board[val1][val2];
     }
+
+    public int[] findLoc(int val)
+    {
+    	
+    	for (int a = 0; a < board.length; a++) {
+    		for(int b = 0; b < board[0].length; b++) {
+    			if (board[a][b].getVal() == val)
+    				return new int[]{a,b};
+    		}
+    	}
+    	return new int[]{0,0};
+    }
     
     public Space[][] getBoard()
     {

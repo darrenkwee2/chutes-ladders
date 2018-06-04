@@ -10,12 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -29,12 +31,13 @@ import javafx.scene.text.Font;
  */
 public class JavaFXGame extends Application
 {
-    private Board board;
-    private Dice dice;
-    private Player p1;
-    private Player p2;
-    private boolean hasWon;
-    private int currentTurn;
+    private static Board board;
+    private static Dice dice;
+    private static Player p1;
+    private static Player p2;
+    private static boolean p1HasWon;
+    private static int currentTurn;
+    private static Stage main = new Stage();
 
     @Override
     public void start(Stage stage) throws Exception
@@ -61,9 +64,29 @@ public class JavaFXGame extends Application
         GridPane.setConstraints(name2,0,1);
         grid.getChildren().add(name2);
         
-        Scene startScene = new Scene(grid, 350,150);
+        Scene startScene = new Scene(grid, 350,100);
         Stage startScreen = new Stage();
         startScreen.setTitle("Welcome to Chutes and Ladders!");
+        
+        
+        ImageView p1Icon = new ImageView();
+        p1Icon.setFitWidth(30);
+        p1Icon.setFitHeight(30);
+        p1Icon.setPreserveRatio(true);
+        Image blue = new Image("file:blue.png");
+        p1Icon.setImage(blue);
+        //board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
+        //board.getSpace(7,1).getChildren().add(p1Icon);
+        
+        ImageView p2Icon = new ImageView();
+        p2Icon.setFitWidth(30);
+        p2Icon.setFitHeight(30);
+        p2Icon.setPreserveRatio(true);
+        Image red = new Image("file:red.png");
+        p2Icon.setImage(red);
+        //board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
+        //board.getSpace(7,0).getChildren().add(p2Icon);                 
+        
         
         
         Button startButton = new Button();
@@ -77,7 +100,7 @@ public class JavaFXGame extends Application
                 p2 = new Player(name2.getText());
                 board = new Board();
                 dice = new Dice();
-                hasWon = false;
+                p1HasWon = false;
                 currentTurn = 1;
                 
                 GridPane grid2 = new GridPane();
@@ -94,7 +117,24 @@ public class JavaFXGame extends Application
                 	}
                 }
        
+                ImageView p1Icon = new ImageView();
+                p1Icon.setFitWidth(30);
+                p1Icon.setFitHeight(30);
+                p1Icon.setPreserveRatio(true);
+                Image blue = new Image("file:blue.png");
+                p1Icon.setImage(blue);
+                //board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
+                //board.getSpace(7,1).getChildren().add(p1Icon);
                 
+                ImageView p2Icon = new ImageView();
+                p2Icon.setFitWidth(30);
+                p2Icon.setFitHeight(30);
+                p2Icon.setPreserveRatio(true);
+                Image red = new Image("file:red.png");
+                p2Icon.setImage(red);
+                //board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
+                //board.getSpace(7,0).getChildren().add(p2Icon);                 
+                                
                 StackPane diceView = new StackPane();
                 diceView.setBackground(Background.EMPTY);
                 Image dice1 = new Image("file:dice1.png");
@@ -142,50 +182,55 @@ public class JavaFXGame extends Application
                       {
                           diceDisplay.setImage(dice6);
                       }
+                      
+                      
+                      if (currentTurn == 1) {
+                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().remove(p1Icon);
+                      p1.move(i);
+                      if (board.findObstacle(p1.getLoc()) != 0)
+                      {
+                          p1.setLoc(board.findObstacle(p1.getLoc()));
+                      }
+                      
+                      if (p1.getLoc() >= 63)
+                      {
+                          p1.win();
+                          System.out.println(p1.getName() + " Wins!");
+                          p1HasWon = true;
+                          win();
+                      }
+                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().add(p1Icon);
+                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);   
+                      currentTurn = 2;
+                     }
+                      else {
+                      
+                      if (currentTurn == 2 ) {
+                    	  p2.move(i);
+                          
+                          if (board.findObstacle(p2.getLoc()) != 0)
+                          {
+                              p2.setLoc(board.findObstacle(p2.getLoc()));
+                          }
+                          
+                          if (p2.getLoc() >= 63)
+                          {
+                              if (p1HasWon == false) 
+                              {
+                                  p2.win();
+                                  System.out.println(p2.getName() + " Wins!");
+                                  win();
+                              }
+                          }
+                          board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).getChildren().add(p2Icon);
+                          board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
+                          currentTurn = 1;
+                      }
                 	 }
-
-				
+                	 }
                  });
                  
-                 ImageView p1Icon = new ImageView();
-                 p1Icon.setFitWidth(30);
-                 p1Icon.setFitHeight(30);
-                 p1Icon.setPreserveRatio(true);
-                 Image blue = new Image("file:blue.png");
-                 p1Icon.setImage(blue);
-                 board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
-                 board.getSpace(7,1).getChildren().add(p1Icon);
-                 
-                 ImageView p2Icon = new ImageView();
-                 p2Icon.setFitWidth(30);
-                 p2Icon.setFitHeight(30);
-                 p2Icon.setPreserveRatio(true);
-                 Image red = new Image("file:red.png");
-                 p2Icon.setImage(red);
-                 board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
-                 board.getSpace(7,0).getChildren().add(p2Icon);                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
+               
                 diceButton.setGraphic(diceDisplay);
                 diceView.getChildren().add(diceButton);
                 
@@ -197,7 +242,7 @@ public class JavaFXGame extends Application
                 finalPane.setCenter(grid2);
                 finalPane.setLeft(diceView);
                 
-                Stage main = new Stage();
+               
                 main.setTitle("Chutes and Ladders: " + p1.getName() + " vs. "+ p2.getName());
                 
                 Scene s = new Scene(finalPane, 1100,720);
@@ -210,6 +255,36 @@ public class JavaFXGame extends Application
         grid.add(startButton,2,0);
         startScreen.setScene(startScene);
         startScreen.show();
+    }
+    
+    public static void win()
+    {
+    	Stage winStage = new Stage();
+    	VBox winBox = new VBox();
+    	
+    	if(p1HasWon) {
+    		winStage.setTitle("Congrats " + p1.getName() + "has won!");
+    		Text t = new Text();
+    		t.setText(p1.getName() + "wins yay");
+    		t.setFont(new Font(175));
+    		winBox.getChildren().add(t);
+    		winBox.setAlignment(Pos.CENTER);
+    	}
+    	else 
+    	{
+    		winStage.setTitle("Congrats " + p2.getName() + "has won!");
+    		Text t1 = new Text();
+    		t1.setText(p2.getName() + " wins yay");
+    		t1.setFont(new Font(175));
+    		//add animated color with set fill
+    		winBox.getChildren().add(t1);
+    		winBox.setAlignment(Pos.CENTER);
+    	}
+    	
+    	Scene winScene = new Scene(winBox, 1100, 720);
+    	winStage.setScene(winScene);
+        winStage.show();
+        main.close();
     }
 
     public static void main(String args[])

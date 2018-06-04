@@ -62,7 +62,7 @@ public class Space extends StackPane
     {
         return val;
     }
-    
+       
     public boolean hasObstacle()
     {
         return hasObstacle;
@@ -79,8 +79,5 @@ public class Space extends StackPane
         return i.toString();
     }
     
-    public void change(Image i)
-    {
-        
-    }
+    
 }
