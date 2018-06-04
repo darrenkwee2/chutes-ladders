@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -99,7 +100,7 @@ public class JavaFXGame extends Application
                 p1Icon.setPreserveRatio(true);
                 Image blue = new Image("file:blue.png");
                 p1Icon.setImage(blue);
-                
+                board.getSpace(0,0).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
                 board.getSpace(0,0).getChildren().add(p1Icon);
                 
                 StackPane diceView = new StackPane();
