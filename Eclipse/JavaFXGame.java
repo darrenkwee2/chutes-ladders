@@ -18,7 +18,7 @@ import javafx.scene.text.Text;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-
+import javafx.scene.text.Font;
 
 /**
  * Write a description of JavaFX class JavaFXGame here.
@@ -71,8 +71,7 @@ public class JavaFXGame extends Application
             @Override 
             public void handle(ActionEvent event) {
                 startScreen.close();
-                
-                
+
                 p1 = new Player(name1.getText());
                 p2 = new Player(name2.getText());
                 board = new Board();
@@ -94,6 +93,15 @@ public class JavaFXGame extends Application
                 	}
                 }
                 
+                ImageView p1Icon = new ImageView();
+                p1Icon.setFitWidth(30);
+                p1Icon.setFitHeight(30);
+                p1Icon.setPreserveRatio(true);
+                Image blue = new Image("file:blue.png");
+                p1Icon.setImage(blue);
+                
+                board.getSpace(0,0).getChildren().add(p1Icon);
+                
                 StackPane diceView = new StackPane();
                 diceView.setBackground(Background.EMPTY);
                 Image dice1 = new Image("file:dice1.png");
@@ -103,8 +111,15 @@ public class JavaFXGame extends Application
                 Image dice5 = new Image("file:dice5.png");
                 Image dice6 = new Image("file:dice6.png");
                 ImageView diceDisplay = new ImageView();
+                diceDisplay.setFitWidth(100);
+                diceDisplay.setFitHeight(100);
+                diceDisplay.setPreserveRatio(true);
                 
+                 diceDisplay.setImage(new Image("file:dicegif.gif"));
                  Button diceButton = new Button();
+                 diceButton.setGraphic(diceDisplay);
+                 diceButton.setFont(new Font(15));
+                 diceButton.setText("Click to Roll Dice");
                  diceButton.setOnAction(new EventHandler<ActionEvent>(){
                 	 @Override
  					public void handle(ActionEvent arg0) {
@@ -138,12 +153,13 @@ public class JavaFXGame extends Application
 
 				
                  });
-                                            
-                diceView.getChildren().add(diceDisplay);
+                
+                diceButton.setGraphic(diceDisplay);
                 diceView.getChildren().add(diceButton);
                 
                 BorderPane finalPane = new BorderPane();
-                BorderPane.setMargin(grid2, new Insets(45));
+                BorderPane.setMargin(grid2, new Insets(30));
+                BorderPane.setMargin(diceView, new Insets(50));
                 //finalPane.setStyle("-fx-background-color: black;");
                 finalPane.setPrefSize(1920,1080);
                 finalPane.setCenter(grid2);
@@ -152,7 +168,7 @@ public class JavaFXGame extends Application
                 Stage main = new Stage();
                 main.setTitle("Chutes and Ladders: " + p1.getName() + " vs. "+ p2.getName());
                 
-                Scene s = new Scene(finalPane, 1280,720);
+                Scene s = new Scene(finalPane, 1100,720);
                 main.setScene(s);
                 main.show(); 
             }

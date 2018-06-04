@@ -5,6 +5,10 @@ import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 
 /**
  * Write a description of class Space here.
@@ -30,10 +34,10 @@ public class Space extends StackPane
         r.setFill(null);
         
         t.setText(Integer.toString(val));
-        t.setFont(Font.font(40));
-        t.setFill(Color.BLUE);
+        t.setFont(Font.font(17));
+        t.setFill(Color.BLACK);
         
-        setAlignment(Pos.CENTER);
+        setAlignment(Pos.TOP_LEFT);
         getChildren().addAll(r,t);
     }
     
@@ -47,10 +51,10 @@ public class Space extends StackPane
         r.setFill(null);
         
         t.setText(Integer.toString(val));
-        t.setFont(Font.font(40));
-        t.setFill(Color.BLUE);
+        t.setFont(Font.font(17));
+        t.setFill(Color.BLACK);
         
-        setAlignment(Pos.CENTER);
+        setAlignment(Pos.TOP_LEFT);
         getChildren().addAll(r,t);
     }
     
@@ -73,5 +77,10 @@ public class Space extends StackPane
     {
         Integer i = new Integer(val);
         return i.toString();
+    }
+    
+    public void change(Image i)
+    {
+        
     }
 }
