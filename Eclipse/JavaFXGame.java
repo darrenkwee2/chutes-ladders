@@ -38,6 +38,15 @@ public class JavaFXGame extends Application
     private static boolean p1HasWon;
     private static int currentTurn;
     private static Stage main = new Stage();
+    private static ImageView diceDisplay = new ImageView();
+    private static Image dice1 = new Image("file:dice1.png");
+    private static Image dice2 = new Image("file:dice2.png");
+    private static Image dice3 = new Image("file:dice3.png");
+    private static Image dice4 = new Image("file:dice4.png");
+    private static Image dice5 = new Image("file:dice5.png");
+    private static Image dice6 = new Image("file:dice6.png");
+    private static ImageView p1Icon = new ImageView();
+    private static ImageView p2Icon = new ImageView();
 
     @Override
     public void start(Stage stage) throws Exception
@@ -67,27 +76,7 @@ public class JavaFXGame extends Application
         Scene startScene = new Scene(grid, 350,100);
         Stage startScreen = new Stage();
         startScreen.setTitle("Welcome to Chutes and Ladders!");
-        
-        
-        ImageView p1Icon = new ImageView();
-        p1Icon.setFitWidth(30);
-        p1Icon.setFitHeight(30);
-        p1Icon.setPreserveRatio(true);
-        Image blue = new Image("file:blue.png");
-        p1Icon.setImage(blue);
-        //board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
-        //board.getSpace(7,1).getChildren().add(p1Icon);
-        
-        ImageView p2Icon = new ImageView();
-        p2Icon.setFitWidth(30);
-        p2Icon.setFitHeight(30);
-        p2Icon.setPreserveRatio(true);
-        Image red = new Image("file:red.png");
-        p2Icon.setImage(red);
-        //board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
-        //board.getSpace(7,0).getChildren().add(p2Icon);                 
-        
-        
+         
         
         Button startButton = new Button();
         startButton.setText("Play!");
@@ -96,14 +85,14 @@ public class JavaFXGame extends Application
             public void handle(ActionEvent event) {
                 startScreen.close();
 
-                p1 = new Player(name1.getText());
+                p1 = new Player(name1.getText());//Initializes some fields
                 p2 = new Player(name2.getText());
                 board = new Board();
                 dice = new Dice();
                 p1HasWon = false;
                 currentTurn = 1;
                 
-                GridPane grid2 = new GridPane();
+                GridPane grid2 = new GridPane();//creates board, change this to a method to apply to multiple board sizes
                 grid2.setBackground(Background.EMPTY);
                 //String style = "-fx-background-color:rgba(255,255,0,1);";
                 //grid2.setStyle(style);
@@ -117,124 +106,47 @@ public class JavaFXGame extends Application
                 	}
                 }
        
-                ImageView p1Icon = new ImageView();
+                //creates player pieces
+                //ImageView p1Icon = new ImageView(); changed to field
                 p1Icon.setFitWidth(30);
                 p1Icon.setFitHeight(30);
                 p1Icon.setPreserveRatio(true);
                 Image blue = new Image("file:blue.png");
-                p1Icon.setImage(blue);
-                //board.getSpace(7,1).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);
-                //board.getSpace(7,1).getChildren().add(p1Icon);
+                p1Icon.setImage(blue); 
                 
-                ImageView p2Icon = new ImageView();
+                //ImageView p2Icon = new ImageView(); changed to field
                 p2Icon.setFitWidth(30);
                 p2Icon.setFitHeight(30);
                 p2Icon.setPreserveRatio(true);
                 Image red = new Image("file:red.png");
                 p2Icon.setImage(red);
-                //board.getSpace(7,0).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
-                //board.getSpace(7,0).getChildren().add(p2Icon);                 
-                                
+                         
+                
+                //creates dice pane
                 StackPane diceView = new StackPane();
                 diceView.setBackground(Background.EMPTY);
-                Image dice1 = new Image("file:dice1.png");
-                Image dice2 = new Image("file:dice2.png");
-                Image dice3 = new Image("file:dice3.png");
-                Image dice4 = new Image("file:dice4.png");
-                Image dice5 = new Image("file:dice5.png");
-                Image dice6 = new Image("file:dice6.png");
-                ImageView diceDisplay = new ImageView();
                 diceDisplay.setFitWidth(100);
                 diceDisplay.setFitHeight(100);
                 diceDisplay.setPreserveRatio(true);
+                diceDisplay.setImage(new Image("file:dicegif.gif"));
                 
-                 diceDisplay.setImage(new Image("file:dicegif.gif"));
-                 Button diceButton = new Button();
-                 diceButton.setGraphic(diceDisplay);
-                 diceButton.setFont(new Font(15));
-                 diceButton.setText("Click to Roll Dice");
-                 diceButton.setOnAction(new EventHandler<ActionEvent>(){
+                //creates dice button
+                Button diceButton = new Button();
+                diceButton.setGraphic(diceDisplay);
+                diceButton.setFont(new Font(15));
+                diceButton.setText("Click to Roll Dice");
+                diceButton.setOnAction(new EventHandler<ActionEvent>(){
                 	 @Override
  					public void handle(ActionEvent arg0) {
-                		 
-                      int i = new Dice().rollDice();
-                      if(i == 1) 
-                      {
-                          diceDisplay.setImage(dice1);
-                      } 
-                      else if(i == 2) 
-                      {
-                          diceDisplay.setImage(dice2);
-                      } 
-                      else if(i ==3) 
-                      {
-                          diceDisplay.setImage(dice3);
-                      }
-                      else if(i == 4)
-                      {
-                          diceDisplay.setImage(dice4);
-                      }
-                      else if(i == 5) 
-                      {
-                          diceDisplay.setImage(dice5);
-                      }
-                      else if(i == 6) 
-                      {
-                          diceDisplay.setImage(dice6);
-                      }
-                      
-                      
-                      if (currentTurn == 1) {
-                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().remove(p1Icon);
-                      p1.move(i);
-                      if (board.findObstacle(p1.getLoc()) != 0)
-                      {
-                          p1.setLoc(board.findObstacle(p1.getLoc()));
-                      }
-                      
-                      if (p1.getLoc() >= 63)
-                      {
-                          p1.win();
-                          System.out.println(p1.getName() + " Wins!");
-                          p1HasWon = true;
-                          win();
-                      }
-                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().add(p1Icon);
-                      board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);   
-                      currentTurn = 2;
-                     }
-                      else {
-                      
-                      if (currentTurn == 2 ) {
-                    	  p2.move(i);
-                          
-                          if (board.findObstacle(p2.getLoc()) != 0)
-                          {
-                              p2.setLoc(board.findObstacle(p2.getLoc()));
-                          }
-                          
-                          if (p2.getLoc() >= 63)
-                          {
-                              if (p1HasWon == false) 
-                              {
-                                  p2.win();
-                                  System.out.println(p2.getName() + " Wins!");
-                                  win();
-                              }
-                          }
-                          board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).getChildren().add(p2Icon);
-                          board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
-                          currentTurn = 1;
-                      }
-                	 }
+                		 play();                      
                 	 }
                  });
                  
                
-                diceButton.setGraphic(diceDisplay);
+                diceButton.setGraphic(diceDisplay);//adds dice image and dice button
                 diceView.getChildren().add(diceButton);
                 
-                BorderPane finalPane = new BorderPane();
+                BorderPane finalPane = new BorderPane();//final game pane
                 BorderPane.setMargin(grid2, new Insets(30));
                 BorderPane.setMargin(diceView, new Insets(50));
                 //finalPane.setStyle("-fx-background-color: black;");
@@ -256,6 +168,82 @@ public class JavaFXGame extends Application
         startScreen.setScene(startScene);
         startScreen.show();
     }
+    
+    
+    public static void play()
+    {
+    	int i = new Dice().rollDice();//dice rolling
+        if(i == 1) 
+        {
+            diceDisplay.setImage(dice1);
+        } 
+        else if(i == 2) 
+        {
+            diceDisplay.setImage(dice2);
+        } 
+        else if(i ==3) 
+        {
+            diceDisplay.setImage(dice3);
+        }
+        else if(i == 4)
+        {
+            diceDisplay.setImage(dice4);
+        }
+        else if(i == 5) 
+        {
+            diceDisplay.setImage(dice5);
+        }
+        else if(i == 6) 
+        {
+            diceDisplay.setImage(dice6);
+        }
+        
+        
+        if (currentTurn == 1) {
+        board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().remove(p1Icon);//removes previous icon from previous space
+        p1.move(i);//changes icon space and player location
+        if (board.findObstacle(p1.getLoc()) != 0)//checks for obstacle
+        {
+            p1.setLoc(board.findObstacle(p1.getLoc()));
+        }
+        
+        if (p1.getLoc() >= 63)//checks for winning
+        {
+            p1.win();
+            System.out.println(p1.getName() + " Wins!");
+            p1HasWon = true;
+            win();
+        }
+        board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().add(p1Icon);//add icons
+        board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);//changes to bottom right   
+        currentTurn = 2;
+       }
+        else {
+        
+        if (currentTurn == 2 ) { //same as player 1, but for player 2- might want to change to one variable to support multiple players
+      	  p2.move(i);
+            
+            if (board.findObstacle(p2.getLoc()) != 0)
+            {
+                p2.setLoc(board.findObstacle(p2.getLoc()));
+            }
+            
+            if (p2.getLoc() >= 63)
+            {
+                if (p1HasWon == false) 
+                {
+                    p2.win();
+                    System.out.println(p2.getName() + " Wins!");
+                    win();
+                }
+            }
+            board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).getChildren().add(p2Icon);
+            board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
+            currentTurn = 1;
+        }
+  	 }
+    }
+    
     
     public static void win()
     {
@@ -287,6 +275,7 @@ public class JavaFXGame extends Application
         main.close();
     }
 
+    
     public static void main(String args[])
     {
         launch(args);
