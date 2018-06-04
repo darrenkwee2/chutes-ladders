@@ -1,5 +1,3 @@
-import com.darrenkwee.chutesladders.Dice;
-import com.darrenkwee.chutesladders.R;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -105,34 +103,44 @@ public class JavaFXGame extends Application
                 Image dice5 = new Image("file:dice5.png");
                 Image dice6 = new Image("file:dice6.png");
                 ImageView diceDisplay = new ImageView();
-                int i = new Dice().rollDice();
-                if(i == 1) 
-                {
-                    diceDisplay.setImage(dice1);
-                } 
-                else if(i == 2) 
-                {
-                    diceDisplay.setImage(dice2);
-                } 
-                else if(i ==3) 
-                {
-                    diceDisplay.setImage(dice3);
-                }
-                else if(i == 4)
-                {
-                    diceDisplay.setImage(dice4);
-                }
-                else if(i == 5) 
-                {
-                    diceDisplay.setImage(dice5);
-                }
-                else if(i == 6) 
-                {
-                    diceDisplay.setImage(dice6);
-                }
                 
+                 Button diceButton = new Button();
+                 diceButton.setOnAction(new EventHandler<ActionEvent>(){
+                	 @Override
+ 					public void handle(ActionEvent arg0) {
+                		 
+                      int i = new Dice().rollDice();
+                      if(i == 1) 
+                      {
+                          diceDisplay.setImage(dice1);
+                      } 
+                      else if(i == 2) 
+                      {
+                          diceDisplay.setImage(dice2);
+                      } 
+                      else if(i ==3) 
+                      {
+                          diceDisplay.setImage(dice3);
+                      }
+                      else if(i == 4)
+                      {
+                          diceDisplay.setImage(dice4);
+                      }
+                      else if(i == 5) 
+                      {
+                          diceDisplay.setImage(dice5);
+                      }
+                      else if(i == 6) 
+                      {
+                          diceDisplay.setImage(dice6);
+                      }
+                	 }
+
+				
+                 });
+                                            
                 diceView.getChildren().add(diceDisplay);
-                
+                diceView.getChildren().add(diceButton);
                 
                 BorderPane finalPane = new BorderPane();
                 BorderPane.setMargin(grid2, new Insets(45));
