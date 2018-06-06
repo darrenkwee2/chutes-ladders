@@ -1,7 +1,7 @@
 
 /**
- * Write a description of class Player here.
- *
+ * Represents a player, where the player knows it's location on the board, it's name, number, and whether it has won or not. 
+ * 
  * @author Darren and Sushane
  * @version 6/6
  */
@@ -13,6 +13,11 @@ public class Player
     private boolean hasWon;
     private int playerNum;
     
+    /**
+     * Creates a player object at the first space and has a player number based on a static variable.
+     * 
+     * @param A string, which represents the name of the player
+     */
     public Player(String name)
     {
         numPlayers++;
@@ -23,21 +28,37 @@ public class Player
     }
     
     //accessors
+    /**
+     * Accesses the number of players in a game.
+     * @return An integer which represents the number of players in the game, based on a static variable of the player class. 
+     */
     public static int getNumPlayers()
     {
         return numPlayers;
     }
     
+    /**
+     * Accesses the player number of the player
+     * @return An integer which represents the player number.
+     */
     public int getPlayerNum()
     {
         return playerNum; 
     }
     
+    /**
+     * Accesses whether the player has won or not.
+     * @return a boolean which is true if the player has won, false otherwise.
+     */
     public boolean getHasWon()
     {
         return hasWon;
     }
     
+    /**
+     * Accesses the location of the player, corresponding to the value of each space on the board.
+     * @return An integer, which represents the value of the space on the board at which the player is located at. 
+     */
     public int getLoc()
     {
         return loc;
@@ -49,6 +70,11 @@ public class Player
     }
 
     //mutators
+    public void resetPlayers()
+    {
+        numPlayers = 0;
+    }
+    
     public void move(int numPlaces)
     {
         loc += numPlaces;
