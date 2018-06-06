@@ -47,6 +47,9 @@ public class JavaFXGame extends Application
     private static Image dice6 = new Image("file:dice6.png");
     private static ImageView p1Icon = new ImageView();
     private static ImageView p2Icon = new ImageView();
+    private static ImageView snake = new ImageView();
+    private static ImageView ladder = new ImageView();
+    
 
     @Override
     public void start(Stage stage) throws Exception
@@ -105,7 +108,15 @@ public class JavaFXGame extends Application
                 		grid2.add(board.getSpace(row,col), col, row);
                 	}
                 }
-       
+                
+                
+                //creates snake image
+                
+                Image snakeImage = new Image("file:snake.png");
+                Image ladderImage = new Image("file:ladder.png");
+                ladder.setImage(ladderImage);
+                snake.setImage(snakeImage);
+                
                 //creates player pieces
                 //ImageView p1Icon = new ImageView(); changed to field
                 p1Icon.setFitWidth(30);
@@ -251,7 +262,7 @@ public class JavaFXGame extends Application
     	VBox winBox = new VBox();
     	
     	if(p1HasWon) {
-    		winStage.setTitle("Congrats " + p1.getName() + "has won!");
+    		winStage.setTitle("Congrats " + p1.getName() + " has won!");
     		Text t = new Text();
     		t.setText(p1.getName() + "wins yay");
     		t.setFont(new Font(175));
@@ -260,7 +271,7 @@ public class JavaFXGame extends Application
     	}
     	else 
     	{
-    		winStage.setTitle("Congrats " + p2.getName() + "has won!");
+    		winStage.setTitle("Congrats " + p2.getName() + " has won!");
     		Text t1 = new Text();
     		t1.setText(p2.getName() + " wins yay");
     		t1.setFont(new Font(175));
