@@ -1,15 +1,15 @@
 
 /**
- * Write a description of class Board here.
+ * Represents the playing board which will hold a 2D array of space objects.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Darren and Sushane
+ * @version 6/5
  */
 public class Board
 {
     private Space[][] board;
     
-    public Board()//default constructor
+    public Board()
     {
         board = new Space[8][8];
         int label = 0;
@@ -51,7 +51,7 @@ public class Board
         board[2][0] = new Space(47, new Obstacle(47, 28));
     }
     
-    public Board(int row, int col, int numObstacles)//not complete, use math random for obstacles
+    public Board(int row, int col, int numObstacles)//not complete
     {
         board = new Space[row][col];
         int count = 0;
