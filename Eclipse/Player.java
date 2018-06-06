@@ -2,8 +2,8 @@
 /**
  * Write a description of class Player here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Darren and Sushane
+ * @version 6/6
  */
 public class Player
 {
@@ -22,6 +22,7 @@ public class Player
         this.playerNum = numPlayers;
     }
     
+    //accessors
     public static int getNumPlayers()
     {
         return numPlayers;
@@ -47,7 +48,7 @@ public class Player
         return name;
     }
 
-    
+    //mutators
     public void move(int numPlaces)
     {
         loc += numPlaces;

@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.target=Obstacle
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Obstacle\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Represents\ an\ obstacle\ on\ the\ playing\ board,\ where\ the\ Space\ class\ contains\ a\ has-a\ relationship\ with\ this\ class.\r\n\ An\ obstacle\ knows\ it's\ start\ value\ and\ end\ value,\ where\ the\ start\ value\ represents\ the\ space\ at\ which\ it\ is\ located\ at,\ and\ the\ end\ value\ represents\ the\ result\ value\ of\ the\ space\ which\ the\ player\ will\ land\ on\ if\ they\ land\ on\ this\ space.\ \r\n\ \r\n\ @author\ Darren\ and\ Sushane\r\n\ @version\ 6/6\r\n
 comment1.params=startVal\ endVal
 comment1.target=Obstacle(int,\ int)
+comment1.text=\r\n\ Used\ to\ create\ an\ obstacle\ that\ has\ a\ specified\ start\ and\ end\ value.\r\n\ @param\ Two\ integers,\ where\ the\ first\ one\ represents\ the\ start\ value,\ and\ the\ second\ represents\ the\ end\ value.\ \r\n
 comment2.params=
 comment2.target=int\ getEndVal()
+comment2.text=\r\n\ Accesses\ this\ obstacle's\ end\ value,\ for\ the\ purpose\ of\ determining\ the\ player's\ next\ location\ if\ they\ land\ on\ this\ space.\ \r\n\ @return\ An\ integer\ which\ represents\ the\ obstacle's\ end\ value.\ \r\n
 numComments=3

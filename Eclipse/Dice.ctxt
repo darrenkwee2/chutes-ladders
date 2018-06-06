@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Dice
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Dice\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Represents\ a\ dice,\ for\ the\ purpose\ of\ being\ used\ to\ return\ a\ random\ number\ in\ a\ specified\ range.\r\n\r\n\ @author\ Darren\ and\ Sushane\r\n\ @version\ 6/6\r\n
 comment1.params=
 comment1.target=Dice()
+comment1.text=\r\n\ Default,\ which\ creates\ a\ dice\ which\ generates\ a\ value\ between\ 1\ and\ 6,\ to\ represent\ a\ traditional\ chutes\ and\ ladders\ dice.\ \r\n
 comment2.params=min\ max
 comment2.target=Dice(int,\ int)
+comment2.text=\r\n\ Creates\ a\ dice\ with\ a\ custom\ specified\ range.\ \r\n\ @param\ Two\ integers,\ where\ the\ first\ int\ represents\ the\ minimum\ value\ and\ the\ second\ represents\ the\ maximum\ value.\ \r\n\ \r\n
 comment3.params=
 comment3.target=int\ rollDice()
+comment3.text=\r\n\ Returns\ a\ value\ that\ is\ between\ the\ dice's\ range,\ randomly,\ to\ represent\ rolling\ the\ dice\ irl.\r\n\ @return\ A\ random\ value,\ which\ simulates\ the\ roll\ of\ a\ dice.\r\n
 numComments=4
