@@ -215,7 +215,6 @@ public class JavaFXGame extends Application
         
         if (p1.getLoc() >= 63)//checks for winning
         {
-            p1.win();
             System.out.println(p1.getName() + " Wins!");
             p1HasWon = true;
             win();
@@ -238,7 +237,6 @@ public class JavaFXGame extends Application
             {
                 if (p1HasWon == false) 
                 {
-                    p2.win();
                     System.out.println(p2.getName() + " Wins!");
                     win();
                 }

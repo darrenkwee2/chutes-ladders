@@ -31,7 +31,6 @@ public class TextGame
             
             if (p1.getLoc() >= 63)
             {
-                p1.win();
                 System.out.println(p1.getName() + " Wins!");
                 hasWon = true;
             }
@@ -49,7 +48,6 @@ public class TextGame
             {
                 if (hasWon == false) 
                 {
-                    p2.win();
                     System.out.println(p2.getName() + " Wins!");
                     hasWon = true;
                 }
