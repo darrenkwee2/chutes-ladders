@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +16,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.TextAlignment;;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -49,7 +48,7 @@ public class JavaFXGame extends Application
     private static ImageView p2Icon = new ImageView();
     private static ImageView snake = new ImageView();
     private static ImageView ladder = new ImageView();
-    
+    private static StackPane diceView = new StackPane();
 
     @Override
     public void start(Stage stage) throws Exception
@@ -103,10 +102,10 @@ public class JavaFXGame extends Application
                 grid2.setHgap(30);                
                 for(int row = 0; row < board.getBoard().length; row++)
                 {
-                	for(int col = 0; col < board.getBoard()[0].length; col++)
-                	{
-                		grid2.add(board.getSpace(row,col), col, row);
-                	}
+                    for(int col = 0; col < board.getBoard()[0].length; col++)
+                    {
+                        grid2.add(board.getSpace(row,col), col, row);
+                    }
                 }
                 
                 
@@ -132,9 +131,8 @@ public class JavaFXGame extends Application
                 Image red = new Image("file:red.png");
                 p2Icon.setImage(red);
                          
-                
                 //creates dice pane
-                StackPane diceView = new StackPane();
+                //StackPane diceView = new StackPane();
                 diceView.setBackground(Background.EMPTY);
                 diceDisplay.setFitWidth(100);
                 diceDisplay.setFitHeight(100);
@@ -147,11 +145,10 @@ public class JavaFXGame extends Application
                 diceButton.setFont(new Font(15));
                 diceButton.setText("Click to Roll Dice");
                 diceButton.setOnAction(new EventHandler<ActionEvent>(){
-                	 @Override
- 					public void handle(ActionEvent arg0) {
-                		 play();                      
-                	 }
-                 });
+                    public void handle(ActionEvent arg0) {
+                        play();                    
+                }
+                });
                  
                
                 diceButton.setGraphic(diceDisplay);//adds dice image and dice button
@@ -165,9 +162,7 @@ public class JavaFXGame extends Application
                 finalPane.setCenter(grid2);
                 finalPane.setLeft(diceView);
                 
-               
                 main.setTitle("Chutes and Ladders: " + p1.getName() + " vs. "+ p2.getName());
-                
                 Scene s = new Scene(finalPane, 1100,720);
                 main.setScene(s);
                 main.show(); 
@@ -227,7 +222,7 @@ public class JavaFXGame extends Application
         }
         board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).getChildren().add(p1Icon);//add icons
         board.getSpace(board.findLoc(p1.getLoc())[0], board.findLoc(p1.getLoc())[1]).setAlignment(p1Icon, Pos.BOTTOM_RIGHT);//changes to bottom right   
-        currentTurn = 2;
+        changeTurn();
        }
         else {
         
@@ -250,9 +245,26 @@ public class JavaFXGame extends Application
             }
             board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).getChildren().add(p2Icon);
             board.getSpace(board.findLoc(p2.getLoc())[0], board.findLoc(p2.getLoc())[1]).setAlignment(p2Icon, Pos.BOTTOM_RIGHT);
-            currentTurn = 1;
+            changeTurn();
         }
   	 }
+    }
+    
+    public static void changeTurn()
+    {
+        //adds player's turn on dice pane
+        Text p1Name = new Text(p1.getName());
+        Text p2Name = new Text(p2.getName());
+        if (currentTurn == 1)
+        {
+            currentTurn = 2;
+            diceView.getChildren().add(p2Name);
+        }
+        else 
+        {
+            currentTurn = 1;
+            diceView.getChildren().add(p1Name);
+        }
     }
     
     
