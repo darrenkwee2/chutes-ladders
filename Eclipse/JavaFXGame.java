@@ -23,10 +23,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
- * Write a description of JavaFX class JavaFXGame here.
+ * Used to "compile together" all of the classes to execute one play-through of the game.
+ * Contains JavaFX materials. 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Darren and Sushane
+ * @version 6/7
  */
 public class JavaFXGame extends Application
 {
@@ -175,7 +176,9 @@ public class JavaFXGame extends Application
         startScreen.show();
     }
     
-    
+    /**
+     * Intended to run when the dice is rolled, which will move the player based on the dice value rolled.
+     */
     public static void play()
     {
     	int i = new Dice().rollDice();//dice rolling
@@ -248,6 +251,9 @@ public class JavaFXGame extends Application
   	 }
     }
     
+    /**
+     * Changes which player's turn it currently is, will be used in the future for a display of which player's turn it currently is. 
+     */
     public static void changeTurn()
     {
         //adds player's turn on dice pane
@@ -265,7 +271,10 @@ public class JavaFXGame extends Application
         }
     }
     
-    
+    /**
+     * Intended to be run when the game is won by one player or another.
+     * Closes the game window and opens a new "congraulatory" message.
+     */
     public static void win()
     {
     	Stage winStage = new Stage();

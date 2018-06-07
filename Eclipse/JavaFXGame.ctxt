@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=JavaFXGame
-comment0.text=\r\n\ Write\ a\ description\ of\ JavaFX\ class\ JavaFXGame\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Used\ to\ "compile\ together"\ all\ of\ the\ classes\ to\ execute\ one\ play-through\ of\ the\ game.\r\n\ Contains\ JavaFX\ materials.\ \r\n\r\n\ @author\ Darren\ and\ Sushane\r\n\ @version\ 6/7\r\n
 comment1.params=stage
 comment1.target=void\ start(javafx.stage.Stage)
 comment2.params=event
@@ -9,10 +9,13 @@ comment3.params=arg0
 comment3.target=void\ handle(javafx.event.ActionEvent)
 comment4.params=
 comment4.target=void\ play()
+comment4.text=\r\n\ Intended\ to\ run\ when\ the\ dice\ is\ rolled,\ which\ will\ move\ the\ player\ based\ on\ the\ dice\ value\ rolled.\r\n
 comment5.params=
 comment5.target=void\ changeTurn()
+comment5.text=\r\n\ Changes\ which\ player's\ turn\ it\ currently\ is,\ will\ be\ used\ in\ the\ future\ for\ a\ display\ of\ which\ player's\ turn\ it\ currently\ is.\ \r\n
 comment6.params=
 comment6.target=void\ win()
+comment6.text=\r\n\ Intended\ to\ be\ run\ when\ the\ game\ is\ won\ by\ one\ player\ or\ another.\r\n\ Closes\ the\ game\ window\ and\ opens\ a\ new\ "congraulatory"\ message.\r\n
 comment7.params=args
 comment7.target=void\ main(java.lang.String[])
 numComments=8

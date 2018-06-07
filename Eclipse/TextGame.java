@@ -17,8 +17,6 @@ public class TextGame
         int currentTurn = 1;
         //set up board
         
-        
-        
         while (hasWon == false)
         {
             currentTurn = 1;
