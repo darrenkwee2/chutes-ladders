@@ -16,7 +16,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -273,7 +273,7 @@ public class JavaFXGame extends Application
     
     /**
      * Intended to be run when the game is won by one player or another.
-     * Closes the game window and opens a new "congraulatory" message.
+     * Closes the game window and opens a new "congradulatory" message.
      */
     public static void win()
     {
