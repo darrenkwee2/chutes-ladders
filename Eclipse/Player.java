@@ -38,7 +38,7 @@ public class Player
     }
     
     /**
-     * Accesses the player number of the player
+     * Accesses the player number of the player.
      * @return An integer which represents the player number.
      */
     public int getPlayerNum()
@@ -64,27 +64,38 @@ public class Player
         return loc;
     }
     
+    /**
+     * Accesses the name of the player.
+     * @return A string, which represents the name of the player. 
+     */
     public String getName()
     {
         return name;
     }
 
     //mutators
+    /**
+     * Resets the number of players in the game, used in conjunction with the other reset methods.
+     * 
+     */
     public void resetPlayers()
     {
         numPlayers = 0;
     }
     
+    /**
+     * Moves the player in a forward direction on the board.
+     * @param An integer, which represents the number of spaces to be moved by the player. 
+     */
     public void move(int numPlaces)
     {
         loc += numPlaces;
     }
-        
-    public void win()
-    {
-        hasWon = true;
-    }
     
+    /**
+     * Moves the player to a certain location on the board directly. 
+     * @param An integer, which represents the value on the board the player is to be moved to. 
+     */
     public void setLoc(int val)
     {
         loc = val;
