@@ -254,7 +254,7 @@ public class JavaFXGame extends Application
     /**
      * Changes which player's turn it currently is, will be used in the future for a display of which player's turn it currently is. 
      */
-    public static void changeTurn()
+    public static void changeTurn()//need to finish
     {
         //adds player's turn on dice pane
         Text p1Name = new Text(p1.getName());
@@ -273,7 +273,7 @@ public class JavaFXGame extends Application
     
     /**
      * Intended to be run when the game is won by one player or another.
-     * Closes the game window and opens a new "congradulatory" message.
+     * Closes the game window and opens a new "congrats" message.
      */
     public static void win()
     {
